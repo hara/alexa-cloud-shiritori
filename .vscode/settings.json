@@ -1,0 +1,21 @@
+{
+  "editor.formatOnSave": true,
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json": [
+      ".yaml",
+      ".yml"
+    ]
+  },
+  "yaml.validate": false,
+  "python.venvPath": ".venv",
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.formatting.provider": "yapf",
+  "python.unitTest.pyTestEnabled": true,
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  }
+}

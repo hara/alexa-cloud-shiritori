@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  alexa-cloud-shiritori
+
+  Sample SAM Template for alexa-cloud-shiritori
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  AlexaCloudShiritoriRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: MyAlexaCloudShiritoriRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+  AlexaCloudShiritoriFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: .build/
+      Handler: cloud_shiritori.app.lambda_handler
+      Runtime: python3.6
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          PARAM1: VALUE
+      Events:
+        Alexa:
+          Type: AlexaSkill
+
+Outputs:
+  AlexaCloudShiritoriFunction:
+    Description: "Alexa Cloud Shiritori Lambda Function ARN"
+    Value: !GetAtt AlexaCloudShiritoriFunction.Arn
+
+  AlexaCloudShiritoriRole:
+    Description: "IAM Role for Alexa Cloud Shiritori function"
+    Value: !GetAtt AlexaCloudShiritoriRole.Arn

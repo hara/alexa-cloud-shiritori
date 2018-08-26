@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "==2.18.4"
+ask-sdk-core = "*"
+ask-sdk = "*"
+
+[dev-packages]
+yapf = "*"
+"flake8" = "*"
+mypy = "*"
+pytest = "*"
+rope = "*"
+
+[requires]
+python_version = "3.6"
