@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "==2.18.4"
 ask-sdk-core = "*"
 ask-sdk = "*"
 
